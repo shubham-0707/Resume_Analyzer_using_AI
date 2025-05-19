@@ -1,62 +1,110 @@
-# Resume Analyzer Application
+# 📋 AI Resume Analyzer (with ATS + Job Fit Scoring)
 
-This is a comprehensive resume analysis tool built with Streamlit that helps job seekers optimize their resumes for both ATS (Applicant Tracking Systems) and human reviewers.
+This is a fully modular, AI-powered resume analyzer web app built with **Streamlit**. It performs ATS compliance checks, extracts keywords from job descriptions, and uses **Hugging Face's zero-shot classification** to assess how well a resume aligns with a target job.
 
-## Features
+---
 
-- **Resume Text Extraction**: Extract text from PDF resumes
-- **ATS Compatibility Check**: Score resumes based on ATS-friendly criteria
-- **Keyword Analysis**: Match resume content against job requirements
-- **AI Job Match Scoring**: Use AI to evaluate overall job fit
-- **Automatic Keyword Extraction**: Extract keywords from job descriptions
-- **PDF Report Generation**: Download comprehensive analysis reports
+## 🚀 Features
 
-## Project Structure
+- ✅ ATS Compliance Evaluation (contact info, structure, action verbs, metrics)
+- 🤖 AI-based Job Role Relevance Scoring
+- 🧠 Keyword Extraction from Job Descriptions
+- 📄 PDF Report Generation
+- 🧩 Modular Codebase for Easy Expansion
 
-```
-resume_analyzer/
-├── main.py               # Main Streamlit application
-├── pdf_utils.py          # PDF handling utilities
-├── ats_analyzer.py       # ATS compatibility checking
-├── ai_scorer.py          # AI-based job fit scoring
-├── keyword_extractor.py  # Job description keyword extraction
-├── .env                  # Environment variables (HuggingFace API token)
-└── ats_resume_template.docx  # Downloadable resume template
-```
+---
 
-## Requirements
-
-- Python 3.8+
-- Streamlit
-- PyPDF2
-- fpdf
-- transformers
-- python-dotenv
-- huggingface-hub
-
-## Environment Setup
-
-1. Install dependencies:
-   ```
-   pip install streamlit PyPDF2 fpdf transformers python-dotenv huggingface-hub
-   ```
-
-2. Create a `.env` file with your HuggingFace API token:
-   ```
-   HUGGINGFACE_API_TOKEN=your_token_here
-   ```
-
-## Running the Application
+## 📁 Folder Structure
 
 ```
-streamlit run main.py
+resume-analyzer/
+├── app.py                      # Main Streamlit UI
+├── .env                        # Contains Hugging Face API token
+├── utils/
+│   ├── __init__.py             # Optional
+│   ├── parser.py               # PDF text extraction
+│   ├── keyword_extraction.py   # Extract keywords from JD
+│   ├── ats_check_basic.py      # Rule-based ATS evaluation
+│   ├── ai_alignment_check.py   # AI job-role relevance scoring
+│   ├── analyze_resume.py       # Combines basic + AI checks
+│   ├── pdf_generator.py        # PDF report creation
 ```
 
-## How to Use
+---
 
-1. **Manual Keywords**: Enter job role and keywords manually
-2. **Auto-Extract Keywords**: Paste a full job description to automatically extract keywords
-3. Upload your resume (PDF format)
-4. Review analysis results and suggestions
-5. Download the analysis report as PDF
-6. Download an ATS-friendly resume template if needed
+## 🛠 Setup Instructions
+
+### 1. Clone the repository
+
+```bash
+git clone https://github.com/yourusername/resume-analyzer.git
+cd resume-analyzer
+```
+
+### 2. (Optional) Create a virtual environment
+
+```bash
+python -m venv venv
+source venv/bin/activate  # On Windows: venv\\Scripts\\activate
+```
+
+### 3. Install dependencies
+
+If you have a `requirements.txt`, run:
+
+```bash
+pip install -r requirements.txt
+```
+
+Otherwise, install manually:
+
+```bash
+pip install streamlit transformers PyPDF2 fpdf python-dotenv
+```
+
+### 4. Add Hugging Face API key
+
+Create a `.env` file in the root directory:
+
+```env
+HUGGINGFACE_API_TOKEN=your_actual_token_here
+```
+
+> 🔑 You can get a free token from https://huggingface.co/settings/tokens
+
+### 5. Run the app
+
+```bash
+streamlit run app.py
+```
+
+Then open your browser and go to: http://localhost:8501
+
+---
+
+[//]: # (## 📷 Screenshot)
+
+[//]: # ()
+[//]: # (_&#40;Insert a screenshot of the app in use here if available&#41;_)
+
+[//]: # ()
+[//]: # (---)
+
+## 📌 Future Improvements
+
+- [ ] Add OCR support for image-based PDFs
+- [ ] Integrate AI-based rephrasing for experience lines
+- [ ] Support `.docx` file uploads
+- [ ] Export enhanced resume suggestions as `.docx`
+
+---
+
+## 📄 License
+
+MIT License — free for personal and commercial use.
+
+---
+
+## 🙋 Support
+
+Open an issue or contact [shubhamotsav@gmail.com](mailto:shubhamotsav@gmail.com)
